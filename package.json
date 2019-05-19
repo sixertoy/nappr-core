@@ -1,5 +1,5 @@
 {
-  "name": "@iziges/smarter-core",
+  "name": "@iziges/napper-core",
   "version": "0.2.0",
   "private": true,
   "main": "index.js",
