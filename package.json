@@ -1,0 +1,29 @@
+{
+  "name": "@iziges/smarter-core",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "^10.6.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "4.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "eslint-plugin-sort-destructure-keys": "^1.3.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^3.0.0",
+    "stylelint-scss": "^3.6.1"
+  }
+}

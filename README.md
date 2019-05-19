@@ -1,1 +1,1 @@
-# Napper Core
+# Napper Core Library
