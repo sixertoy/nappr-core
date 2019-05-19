@@ -46,7 +46,6 @@
   },
   "scripts": {
     "test": "",
-    "build": "rollup -c",
-    "prepare": "yarn run build"
+    "build": "rollup -c"
   }
 }
