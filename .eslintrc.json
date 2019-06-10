@@ -14,32 +14,14 @@
         "newlines-between": "always"
       }
     ],
+    "react/forbid-prop-types": [2, { "forbid": ["any"] }],
     "react/prop-types": [2, { "skipUndeclared": false }],
-    "react/jsx-filename-extension": [
-      2,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
     "sort-destructure-keys/sort-destructure-keys": [
       2,
-      {
-        "caseSensitive": false
-      }
+      { "caseSensitive": false }
     ],
-    "sort-keys": [
-      2,
-      "asc",
-      {
-        "caseSensitive": true,
-        "natural": false
-      }
-    ],
-    "sort-vars": [
-      2,
-      {
-        "ignoreCase": true
-      }
-    ]
+    "sort-keys": [2, "asc", { "caseSensitive": true, "natural": false }],
+    "sort-vars": [2, { "ignoreCase": true }]
   }
 }
