@@ -50,6 +50,7 @@
   "scripts": {
     "test": "jest",
     "start": "rollup -c -w",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "docs": "docsify serve docs"
   }
 }
