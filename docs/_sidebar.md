@@ -2,7 +2,11 @@
 
 - [**Getting started**](pages/quick-start.md)
 
-- Types Utils
+- API
+
+  - [Servers](pages/servers.md)
+
+- Utils
 
   - [Strings](pages/strings.md)
 

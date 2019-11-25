@@ -6,7 +6,16 @@
 
 ```javascript
 isString('this is a foo string !');
-// output true
+// => true
+```
+
+#### isEmpty
+
+> Vérifie si la value est une chaine de caractère vide `string`, alias de la function utils/isEmpty
+
+```javascript
+isEmpty('this is a foo string !');
+// => true
 ```
 
 #### slugify
@@ -15,7 +24,7 @@ isString('this is a foo string !');
 
 ```javascript
 slugify('this is a foo string !');
-// output this-is-a-foo-string
+// => this-is-a-foo-string
 ```
 
 #### toLowerCase
@@ -24,7 +33,7 @@ slugify('this is a foo string !');
 
 ```javascript
 toLowerCase('this is a foo string !');
-// output this is a foo string !
+// => this is a foo string !
 ```
 
 #### toUpperCase
@@ -33,7 +42,7 @@ toLowerCase('this is a foo string !');
 
 ```javascript
 toUpperCase('this is a foo string !');
-// output THIS IS A FOO STRING !
+// => THIS IS A FOO STRING !
 ```
 
 #### ucFirst
@@ -42,5 +51,5 @@ toUpperCase('this is a foo string !');
 
 ```javascript
 ucFirst('this is a foo string !');
-// output THIS IS A FOO STRING !
+// => THIS IS A FOO STRING !
 ```
