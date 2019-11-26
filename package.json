@@ -1,6 +1,6 @@
 {
   "name": "@iziges/napper-core",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "private": true,
   "main": "lib/bundle.min.js",
   "engines": {
