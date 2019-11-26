@@ -17,10 +17,9 @@ const colors = {
   cyan: msg => getColor(msg, COLORS.CYAN),
   gray: msg => getColor(msg, COLORS.GRAY),
   green: msg => getColor(msg, COLORS.GREEN),
-  grey: msg => getColor(msg, COLORS.GRAY),
+  grey: msg => getColor(msg, COLORS.GRAY), // alias of gray
   magenta: msg => getColor(msg, COLORS.MAGENTA),
   red: msg => getColor(msg, COLORS.RED),
-  // alias of gray
   white: msg => getColor(msg, COLORS.WHITE),
   yellow: msg => getColor(msg, COLORS.YELLOW),
 };

@@ -10,6 +10,8 @@ import { isString } from '../../strings';
 import { merge } from '../../objects';
 import { isEmpty } from '../../utils';
 
+const logger = Logger.cloneNS('express');
+
 const DEFAULT_PORT = 3001;
 const DEFAULT_HOST = 'localhost';
 const DEFAULT_URL_EXTENDED = true;
@@ -19,7 +21,7 @@ const DEFAULT_PARAMETER_LIMIT = 100000;
 const DEFAULT_ROUTES = {
   '*': {
     all: (req, res, next) => {
-      Logger.log(`request ${req.method} ${req.url}`);
+      logger.log(`request ${req.method} ${req.url}`);
       next();
     },
   },
@@ -63,10 +65,10 @@ function parseApplicationRoutes(app, routes) {
 function createHTTPServer() {
   const server = http.createServer();
   process.on('SIGINT', () => {
-    Logger.info('[Express] Stop signal received');
+    logger.info('Stop signal received');
     server.close(() => {
       // FIXME -> cleanup DB connections
-      Logger.ok('[Express] Server closed');
+      logger.ok('Server closed');
     });
   });
   return server;
@@ -88,7 +90,7 @@ function createExpressServer(
   const httpServer = createHTTPServer(app);
   return new Promise(resolve => {
     httpServer.listen(port, () => {
-      Logger.ok(`[Express] Server listening under ${endpoint}`);
+      logger.ok(`Server listening under ${endpoint}`);
       resolve(httpServer, endpoint);
     });
   });
