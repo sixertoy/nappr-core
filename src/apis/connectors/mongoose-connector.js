@@ -1,6 +1,8 @@
 import Logger from '../../logger';
 import getMongooseDriver from '../drivers/mongoose-driver';
 
+const logger = Logger.cloneNS('[mongodb]');
+
 // mongoose.Promise = global.Promise;
 
 // const connectionTimer = null;
@@ -61,18 +63,18 @@ function getMongooseConnector() {
         const url = `mongodb://${dbHost}:${dbPort}/${dbName}`;
         // connection
         driver.connection.on('connecting', () => {
-          Logger.info('[MongoDB] Waiting for database connection...');
+          logger.info('Waiting for database connection...');
         });
         driver.connection.on('connected', () => {
-          Logger.ok(`[MongoDB] Connected to ${url}`);
+          logger.ok(`Connected to ${url}`);
           resolve({ driver, url });
         });
         // disconnect/close
         driver.connection.on('disconnected', () => {
-          Logger.error(`[MongoDB] Disconnected from ${url}`);
+          logger.error(`Disconnected from ${url}`);
         });
         driver.connection.on('close', () => {
-          Logger.ok(`[MongoDB] Connection ${url} closed`);
+          logger.ok(`Connection ${url} closed`);
         });
         driver.connect(url, mongooseOptions);
         // .catch(error => handleError(error));
