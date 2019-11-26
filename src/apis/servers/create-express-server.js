@@ -91,6 +91,9 @@ function createExpressServer(
 
   const httpServer = createHTTPServer(app);
   return new Promise(resolve => {
+    httpServer.on('close', () => {
+      logger.ok('closing server');
+    });
     httpServer.listen(port, () => {
       logger.ok(`Server listening under ${endpoint}`);
       resolve(httpServer, endpoint);

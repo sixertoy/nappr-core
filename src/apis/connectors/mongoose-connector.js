@@ -65,7 +65,7 @@ function getMongooseConnector() {
           logger.info('Waiting for database connection...');
         });
         driver.connection.on('connected', () => {
-          logger.ok(`Connected to ${url}`);
+          logger.ok(`Listening under ${url}`);
           resolve({ driver, url });
         });
         driver.connection.on('disconnected', () => {
