@@ -14,6 +14,7 @@ const logger = Logger.cloneNS('[express]');
 
 const DEFAULT_PORT = 3001;
 const DEFAULT_HOST = 'localhost';
+const DEFAULT_PROTOCOL = 'http';
 const DEFAULT_URL_EXTENDED = true;
 const DEFAULT_REQUEST_LIMIT = '2mb';
 const DEFAULT_PARAMETER_LIMIT = 100000;
@@ -77,9 +78,10 @@ function createHTTPServer() {
 function createExpressServer(
   routes = {},
   port = DEFAULT_PORT,
-  host = DEFAULT_HOST
+  host = DEFAULT_HOST,
+  protocol = DEFAULT_PROTOCOL
 ) {
-  const endpoint = `http://${host}:${port}`;
+  const endpoint = `${protocol}://${host}:${port}`;
   const mergedRoutes = merge(DEFAULT_ROUTES, routes);
 
   const app = createExpressApplication();
