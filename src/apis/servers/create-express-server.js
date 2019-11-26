@@ -11,6 +11,7 @@ import { merge } from '../../objects';
 import { isEmpty } from '../../utils';
 
 const DEFAULT_PORT = 3001;
+const DEFAULT_HOST = 'localhost';
 const DEFAULT_URL_EXTENDED = true;
 const DEFAULT_REQUEST_LIMIT = '2mb';
 const DEFAULT_PARAMETER_LIMIT = 100000;
@@ -71,8 +72,12 @@ function createHTTPServer() {
   return server;
 }
 
-function createExpressServer(routes = {}, port = DEFAULT_PORT) {
-  const endpoint = `http://localhost:${port}`;
+function createExpressServer(
+  routes = {},
+  port = DEFAULT_PORT,
+  host = DEFAULT_HOST
+) {
+  const endpoint = `http://${host}:${port}`;
   const mergedRoutes = merge(DEFAULT_ROUTES, routes);
 
   const app = createExpressApplication();
