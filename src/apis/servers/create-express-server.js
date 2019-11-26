@@ -10,7 +10,7 @@ import { isString } from '../../strings';
 import { merge } from '../../objects';
 import { isEmpty } from '../../utils';
 
-const logger = Logger.cloneNS('express');
+const logger = Logger.cloneNS('[express]');
 
 const DEFAULT_PORT = 3001;
 const DEFAULT_HOST = 'localhost';
