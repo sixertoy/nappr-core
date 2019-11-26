@@ -53,6 +53,7 @@
     "test": "jest",
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "docs": "docsify serve docs"
+    "docs": "docsify serve docs",
+    "prepublish": "yarn build"
   }
 }
