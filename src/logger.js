@@ -48,7 +48,7 @@ const Logger = {
 
   // Log a message in console
   log: (msg, prefix = false) => {
-    const message = buildMessageToTrace(msg, false, prefix);
+    const message = buildMessageToTrace(msg, 'white', prefix);
     trace(message);
   },
 
