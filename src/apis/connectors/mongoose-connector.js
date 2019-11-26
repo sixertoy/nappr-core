@@ -61,7 +61,6 @@ function getMongooseConnector() {
     connect: (dbName, dbPort = 27017, dbHost = '127.0.0.1') => {
       return new Promise(resolve => {
         const url = `mongodb://${dbHost}:${dbPort}/${dbName}`;
-        // connection
         driver.connection.on('connecting', () => {
           logger.info('Waiting for database connection...');
         });
@@ -69,40 +68,24 @@ function getMongooseConnector() {
           logger.ok(`Connected to ${url}`);
           resolve({ driver, url });
         });
-        // disconnect/close
         driver.connection.on('disconnected', () => {
           logger.error(`Disconnected from ${url}`);
         });
         driver.connection.on('close', () => {
           logger.ok(`Connection ${url} closed`);
         });
-        driver.connect(url, mongooseOptions);
-        // .catch(error => handleError(error));
+        driver.connection.on('error', () => {
+          // TODO event handling while connected
+          logger.error(`Error while connected`);
+        });
+        driver.connect(url, mongooseOptions).catch(() => {
+          // TODO event handling after first connection
+          logger.error(`Connection error at startup`);
+        });
       });
     },
     disconnect: () => {},
   };
-  // return
-  //
-  //   //
-  //   // https://mongoosejs.com/docs/connections.html#connection-events
-  //   driver.connection.on('connecting', () => console.log('connecting'));
-  //   driver.connection.on('connected', resolve);
-  //   driver.connection.on('disconnected', () => console.log('disconnected'));
-  //   driver.connection.on('close', () => console.log('close'));
-  // });
-  // https://mongoosejs.com/docs/deprecations.html
-  // mongoose.set('useNewUrlParser', true);
-  // mongoose.set('useUnifiedTopology', true);
-  // connection à la DB
-  // mongoose.connect(dburl, mongooseOptions);
-  // .catch(error => handleError(error));
-  // mongoose.connection.on('error', () => {
-  // NOTE event handling after first connection
-  // logError(err);
-  // });
-  // await tryConnect(dburl, onConnectionSuccess, onConnectionFailed);
-  // };
 }
 
 export default getMongooseConnector;
