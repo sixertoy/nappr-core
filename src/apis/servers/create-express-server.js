@@ -29,9 +29,14 @@ const DEFAULT_ROUTES = {
   '/': { get: (req, res) => res.send('<h1>Hello world !</h1>') },
 };
 
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+};
+
 function createExpressApplication() {
   const app = express();
-  app.use(cors());
+  app.use(cors(corsOptions));
   app.use(cookieParser());
   app.use(compression({ level: zlib.Z_DEFAULT_COMPRESSION }));
   app.use(express.json());
