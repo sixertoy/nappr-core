@@ -1,3 +1,4 @@
+import path from 'path';
 import http from 'http';
 import zlib from 'zlib';
 import express from 'express';
@@ -13,10 +14,11 @@ import { isEmpty } from '../../utils';
 const logger = Logger.cloneNS('[express]');
 
 const DEFAULT_PORT = 3001;
+const DEFAULT_HOST = 'localhost';
 const DEFAULT_URL_EXTENDED = true;
 const DEFAULT_REQUEST_LIMIT = '2mb';
 const DEFAULT_PARAMETER_LIMIT = 100000;
-// const DEFAULT_STATIC_PATH = path.join(process.cwd(), '..', 'public');
+const DEFAULT_STATIC_PATH = path.join(process.cwd(), '..', 'public');
 const DEFAULT_ROUTES = {
   '*': {
     all: (req, res, next) => {
@@ -44,7 +46,7 @@ function createExpressApplication() {
   //   if (req.user) return next();
   //   return next(createError(401, 'Please login to view this page.'));
   // });
-  // app.use(express.static(staticPath));
+  app.use(express.static(DEFAULT_STATIC_PATH));
   return app;
 }
 
@@ -73,8 +75,12 @@ function createHTTPServer(app) {
   return server;
 }
 
-function createExpressServer(routes = {}, port = DEFAULT_PORT) {
-  const endpoint = `http://localhost:${port}`;
+function createExpressServer(
+  routes = {},
+  port = DEFAULT_PORT,
+  host = DEFAULT_HOST
+) {
+  const endpoint = `http://${host}:${port}`;
   const mergedRoutes = merge(DEFAULT_ROUTES, routes);
 
   const app = createExpressApplication();
