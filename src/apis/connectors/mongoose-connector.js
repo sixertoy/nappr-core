@@ -61,23 +61,29 @@ function getMongooseConnector() {
     connect: (dbName, dbPort = 27017, dbHost = '127.0.0.1') => {
       return new Promise(resolve => {
         const url = `mongodb://${dbHost}:${dbPort}/${dbName}`;
-        driver.connection.on('connecting', () => {
-          logger.info('Waiting for database connection...');
-        });
-        driver.connection.on('connected', () => {
-          logger.ok(`Listening under ${url}`);
-          resolve({ driver, url });
-        });
+
         driver.connection.on('disconnected', () => {
           logger.error(`Disconnected from ${url}`);
         });
+
         driver.connection.on('close', () => {
           logger.ok(`Connection ${url} closed`);
         });
+
         driver.connection.on('error', () => {
           // TODO event handling while connected
           logger.error(`Error while connected`);
         });
+
+        driver.connection.on('connected', () => {
+          logger.ok('Connected to database');
+          resolve({ driver, url });
+        });
+
+        driver.connection.on('connecting', () => {
+          logger.info(`Waiting for database at ${url}`);
+        });
+
         driver.connect(url, mongooseOptions).catch(() => {
           // TODO event handling after first connection
           logger.error(`Connection error at startup`);

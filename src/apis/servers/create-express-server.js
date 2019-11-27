@@ -13,8 +13,6 @@ import { isEmpty } from '../../utils';
 const logger = Logger.cloneNS('[express]');
 
 const DEFAULT_PORT = 3001;
-const DEFAULT_HOST = 'localhost';
-const DEFAULT_PROTOCOL = 'http';
 const DEFAULT_URL_EXTENDED = true;
 const DEFAULT_REQUEST_LIMIT = '2mb';
 const DEFAULT_PARAMETER_LIMIT = 100000;
@@ -63,8 +61,8 @@ function parseApplicationRoutes(app, routes) {
   });
 }
 
-function createHTTPServer() {
-  const server = http.createServer();
+function createHTTPServer(app) {
+  const server = http.createServer(app);
   process.on('SIGINT', () => {
     logger.info('Stop signal received');
     server.close(() => {
@@ -75,21 +73,14 @@ function createHTTPServer() {
   return server;
 }
 
-function createExpressServer(
-  routes = {},
-  port = DEFAULT_PORT,
-  host = DEFAULT_HOST,
-  protocol = DEFAULT_PROTOCOL
-) {
-  const endpoint = `${protocol}://${host}:${port}`;
+function createExpressServer(routes = {}, port = DEFAULT_PORT) {
+  const endpoint = `http://localhost:${port}`;
   const mergedRoutes = merge(DEFAULT_ROUTES, routes);
 
   const app = createExpressApplication();
-
-  // create routes before app.listen
   parseApplicationRoutes(app, mergedRoutes);
-
   const httpServer = createHTTPServer(app);
+
   return new Promise(resolve => {
     httpServer.on('close', () => {
       logger.ok('closing server');
