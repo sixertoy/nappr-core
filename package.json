@@ -9,7 +9,7 @@
   "files": [
     "lib"
   ],
-  "peerDepencies": {
+  "depencies": {
     "react-jss": "^10.0.0",
     "react-sizes": "^2.0.0",
     "theming": "^3.2.0"
