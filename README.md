@@ -1,5 +1,7 @@
 # Napper Core Library
 
+## Install
+
 ```bash
-ssh://git@github.com:sixertoy/napper-core.git#latest
+yarn add https://github.com/sixertoy/napper-core.git#latest
 ```
