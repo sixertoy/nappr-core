@@ -1,12 +1,13 @@
 import babel from 'rollup-plugin-babel';
 import commonJS from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
+import { terser } from 'rollup-plugin-terser';
 
-import { dependencies, peerDependencies, main } from './package.json';
+import { dependencies, main, peerDependencies } from './package.json';
 
-const nodeExternalBuiltIns = ['fs', 'path', 'http', 'https'];
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const nodeExternalBuiltIns = [];
 
 export default {
   external: [
@@ -17,18 +18,16 @@ export default {
   input: 'src/index.js',
   output: { file: main, format: 'cjs' },
   plugins: [
-    resolve({ preferBuiltins: true }),
-    commonJS({
-      include: /node_modules/,
-      namedExports: {
-        mongoose: ['Mongoose'],
-      },
-    }),
+    resolve(),
+    commonJS({ include: /node_modules/ }),
     babel({
       babelrc: false,
       exclude: 'node_modules/**',
     }),
+    terser({
+      compress: !isDevelopment,
+      mangle: !isDevelopment,
+    }),
     sizeSnapshot(),
-    terser(),
   ],
 };
