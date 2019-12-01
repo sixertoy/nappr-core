@@ -1,5 +1,6 @@
-import isProduction from './isProduction';
+const { NODE_ENV } = process.env;
 
-const isDevelopment = () => !isProduction();
+const isProduction = () =>
+  NODE_ENV !== 'development' || NODE_ENV !== 'production';
 
-export default isDevelopment;
+export default isProduction;

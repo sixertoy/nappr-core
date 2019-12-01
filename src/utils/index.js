@@ -1,3 +1,3 @@
-export { default as isEmpty } from './isEmpty';
+export { default as isEmpty } from './is-empty';
 export { default as sleep } from './sleep';
-export { default as toggleBooleans } from './toggleBooleans';
+export { default as toggleBooleans } from './toggle-booleans';
