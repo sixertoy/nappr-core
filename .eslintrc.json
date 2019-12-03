@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb-base", "prettier"],
   "plugins": [
     "prettier",
     "simple-import-sort",
@@ -13,11 +13,12 @@
     "node": true
   },
   "rules": {
-    "simple-import-sort/sort": 2,
-    "sort-destructure-keys/sort-destructure-keys": 2,
+    "prettier/prettier": "error",
+    "simple-import-sort/sort": "error",
+    "sort-destructure-keys/sort-destructure-keys": "error",
     "sort-imports": "off",
     "sort-keys": ["error", "asc"],
-    "simple-import-sort/sort": 2,
+    "simple-import-sort/sort": "error",
     "sort-imports": "off",
     "sort-keys-fix/sort-keys-fix": ["error", "asc"]
   }
