@@ -18,8 +18,6 @@
     "sort-destructure-keys/sort-destructure-keys": "error",
     "sort-imports": "off",
     "sort-keys": ["error", "asc"],
-    "simple-import-sort/sort": "error",
-    "sort-imports": "off",
     "sort-keys-fix/sort-keys-fix": ["error", "asc"]
   }
 }

@@ -1,14 +1,19 @@
 {
   "name": "@iziges/napper-core",
   "version": "0.2.23",
+  "description": "JS Core Utils",
+  "author": "Matthieu Lassalvy <sixertoy.github@gmail.com>",
+  "license": "ISC",
   "private": true,
   "main": "./dist/bundle.umd.js",
   "module": "./lib/index.js",
+  "homepage": "https://github.com/sixertoy/napper-core.git",
   "engines": {
     "node": "^10.6.0 || ^12.13.1"
   },
+  "peerDependencies": {},
   "devDependencies": {
-    "@babel/core": "7",
+    "@babel/core": "^7.7.4",
     "builtin-modules": "^3.1.0",
     "docsify": "^4.9.4",
     "dotenv": "^8.2.0",

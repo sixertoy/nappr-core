@@ -40,6 +40,7 @@ export default [
   {
     external,
     input: {
+      fp: './src/fp/index.js',
       index: './src/index.js',
       maths: './src/maths/index.js',
       strings: './src/strings/index.js',
