@@ -36,7 +36,12 @@ const Logger = {
   // Show a red clored message
   // @param {Boolean} throwerror - wheter throw an error catchable by cli
   error: (msg, prefix = false) => {
-    const message = buildMessageToTrace(msg, 'red', prefix, 'Error:');
+    const message = buildMessageToTrace(
+      msg.message || msg,
+      'red',
+      prefix,
+      'Error:'
+    );
     trace(message, 'stderr');
   },
 
