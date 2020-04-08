@@ -1,4 +1,4 @@
-# Nappr JS core library
+# NAPPR JS core library
 
 ## Install
 
