@@ -1,12 +1,21 @@
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import url from '@rollup/plugin-url';
+import svgr from '@svgr/rollup';
 import builtinModules from 'builtin-modules';
 import dotenv from 'dotenv';
 import babel from 'rollup-plugin-babel';
-import commonJS from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { terser } from 'rollup-plugin-terser';
 
-import { dependencies, peerDependencies } from './package.json';
+import {
+  browser,
+  dependencies,
+  main,
+  module,
+  peerDependencies,
+} from './package.json';
 
 dotenv.config();
 const { NODE_ENV } = process.env;
@@ -18,37 +27,47 @@ const external = [
   ...Object.keys(peerDependencies || {}),
 ];
 
-const plugins = (umd = false) => [
-  resolve(),
-  commonJS({ include: /node_modules/ }),
-  babel({ babelrc: false, exclude: 'node_modules/**' }),
-  umd ? sizeSnapshot({ printInfo: !isProduction }) : null,
-  terser({ compress: isProduction, mangle: isProduction }),
+const plugins = () => [
+  postcss({
+    minimize: !isProduction,
+    plugins: [],
+    sourceMap: (isProduction && 'inline') || false,
+  }),
+  url(),
+  svgr(),
+  resolve({ extensions: ['.js', '.jsx'] }),
+  babel({
+    babelrc: true,
+    exclude: ['node_modules/**'],
+    runtimeHelpers: true,
+  }),
+  commonjs(),
+  sizeSnapshot(),
+  terser(),
 ];
 
-export default [
-  {
-    external,
-    input: './src/index.js',
-    output: {
-      esModule: false,
-      file: 'lib/nappr-core.min.js',
+export default {
+  external,
+  input: './src/index.js',
+  output: [
+    {
+      file: main,
+      format: 'cjs',
+      name: 'nappr-core',
+      sourcemap: true,
+    },
+    {
+      file: browser,
       format: 'umd',
       name: 'nappr-core',
+      sourcemap: true,
     },
-    plugins: plugins(true),
-  },
-  {
-    external,
-    input: {
-      fp: './src/fp/index.js',
-      index: './src/index.js',
-      maths: './src/maths/index.js',
-      objects: './src/objects/index.js',
-      strings: './src/strings/index.js',
-      utils: './src/utils/index.js',
+    {
+      file: module,
+      format: 'esm',
+      name: 'nappr-core',
+      sourcemap: true,
     },
-    output: { dir: './lib', format: 'esm', name: 'nappr-core' },
-    plugins: plugins(),
-  },
-];
+  ],
+  plugins: plugins(),
+};
