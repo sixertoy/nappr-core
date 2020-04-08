@@ -10,4 +10,4 @@
 
   - [Strings](pages/strings.md)
 
-- [Github](https://github.com/sixertoy/napper-core)
+- [Github](https://github.com/sixertoy/nappr-core)

@@ -16,7 +16,7 @@ import {
   getConnectorByName,
   Logger,
   createExpressServer,
-} from '@iziges/napper-core';
+} from '@nappr/napper-core';
 
 const port = process.env.GRAPHQL_PORT;
 createExpressServer(routes, port).then(async () => {

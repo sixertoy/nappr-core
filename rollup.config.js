@@ -9,20 +9,21 @@ import { terser } from 'rollup-plugin-terser';
 import { dependencies, peerDependencies } from './package.json';
 
 dotenv.config();
-const isDevelopment = process.env.NODE_ENV === 'development';
-
-const plugins = (umd = false) => [
-  resolve(),
-  commonJS({ include: /node_modules/ }),
-  babel({ babelrc: false, exclude: 'node_modules/**' }),
-  umd ? sizeSnapshot({ printInfo: isDevelopment }) : null,
-  terser({ compress: !isDevelopment, mangle: !isDevelopment }),
-];
+const { NODE_ENV } = process.env;
+const isProduction = NODE_ENV === 'production';
 
 const external = [
   ...builtinModules,
   ...Object.keys(dependencies || {}),
   ...Object.keys(peerDependencies || {}),
+];
+
+const plugins = (umd = false) => [
+  resolve(),
+  commonJS({ include: /node_modules/ }),
+  babel({ babelrc: false, exclude: 'node_modules/**' }),
+  umd ? sizeSnapshot({ printInfo: !isProduction }) : null,
+  terser({ compress: isProduction, mangle: isProduction }),
 ];
 
 export default [
@@ -31,9 +32,9 @@ export default [
     input: './src/index.js',
     output: {
       esModule: false,
-      file: 'dist/bundle.min.js',
+      file: 'lib/nappr-core.min.js',
       format: 'umd',
-      name: 'napper-core',
+      name: 'nappr-core',
     },
     plugins: plugins(true),
   },
@@ -47,7 +48,7 @@ export default [
       strings: './src/strings/index.js',
       utils: './src/utils/index.js',
     },
-    output: { dir: './lib', format: 'esm' },
+    output: { dir: './lib', format: 'esm', name: 'nappr-core' },
     plugins: plugins(),
   },
 ];

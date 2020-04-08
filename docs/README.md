@@ -1,5 +1,5 @@
-# Napper Core Library
+# Nappr JS core lsibrary
 
 ```bash
-ssh://git@github.com:sixertoy/napper-core.git#latest
+ssh://git@github.com:sixertoy/nappr-core.git#latest
 ```
