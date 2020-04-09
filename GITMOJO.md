@@ -1,0 +1,21 @@
+| Tag             | Emoji symbol | Alias                        |
+| --------------- | ------------ | ---------------------------- |
+| :bugs:          | 🐛           | bug                          |
+| :build:         | 🔨           | hammer                       |
+| :ci:            | 🚦           | vertical_traffic_light       |
+| :config:        | 🔧           | conf,wrench                  |
+| :delete:        | 💥           | rm,trash,cleanup,boom        |
+| :docker:        | 🐳           | whale                        |
+| :documentation: | 📚           | docs,doc,books               |
+| :deploy:        | 🚀           | rocket                       |
+| :feature:       | ✨            | feat,feats,features,sparkles |
+| :format:        | 🎨           | refactoring,art              |
+| :hotfix:        | 🚨           | fix,rotating_light           |
+| :init:          | 🎉           | tada                         |
+| :move:          | 🚚           | moving,truck                 |
+| :pkg:           | 📦           | dep,package                  |
+| :responsive:    | ☎️           | mobile,phone                 |
+| :revert:        | ⏪            | rewind                       |
+| :style:         | 💄           | css,sass,styles,ui,lipstick  |
+| :tests:         | ✅            | test,white_check_mark        |
+| :wip:           | 🚧           | construction                 |
