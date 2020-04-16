@@ -23,17 +23,19 @@ const isProduction = NODE_ENV === 'production';
 
 const input = './src/index.js';
 
+const modules = {
+  fp: './src/fp/index.js',
+  maths: './src/maths/index.js',
+  objects: './src/objects/index.js',
+  strings: './src/strings/index.js',
+  utils: './src/utils/index.js',
+};
+
 const external = [
   ...builtinModules,
   ...Object.keys(dependencies || {}),
   ...Object.keys(peerDependencies || {}),
 ];
-
-const options = {
-  globals: { fs: 'fs' },
-  name: 'nappr-core',
-  sourcemap: true,
-};
 
 const plugins = (snapshots = true) => [
   postcss({
@@ -54,7 +56,13 @@ const plugins = (snapshots = true) => [
   terser(),
 ];
 
-export default [
+const options = {
+  globals: { fs: 'fs' },
+  name: 'nappr-core',
+  sourcemap: true,
+};
+
+const outputs = [
   {
     external,
     input,
@@ -85,20 +93,19 @@ export default [
     },
     plugins: plugins(),
   },
+];
+
+export default [
+  ...outputs,
   {
-    // MODULES
+    // MODULES LIb
     external,
-    input: {
-      fp: './src/fp/index.js',
-      maths: './src/maths/index.js',
-      objects: './src/objects/index.js',
-      strings: './src/strings/index.js',
-      utils: './src/utils/index.js',
-    },
+    input: modules,
     output: {
       ...options,
       dir: './lib',
       format: 'esm',
+      sourcemap: false,
     },
     plugins: plugins(false),
   },

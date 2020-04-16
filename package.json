@@ -70,6 +70,7 @@
     "docs": "docsify serve docs --port=2999 --no-open",
     "dev": "rollup --config --watch",
     "prebuild": "rm -rf lib && rm -rf dist",
-    "build": "rollup --config"
+    "build": "rollup --config",
+    "prepare": "npm run build"
   }
 }
