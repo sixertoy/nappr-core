@@ -4,9 +4,9 @@
   "description": "Nappr JS Core Library",
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
-  "main": "lib/nappr-core.js",
-  "browser": "lib/nappr-core.min.js",
-  "module": "./lib/nappr-core.esm.js",
+  "main": "dist/nappr-core.js",
+  "browser": "dist/nappr-core.min.js",
+  "module": "dist/nappr-core.esm.js",
   "homepage": "https://github.com/sixertoy/nappr-core",
   "repository": {
     "type": "git",
@@ -32,7 +32,8 @@
     "node": "^10.6.0 || ^12.13.1"
   },
   "files": [
-    "./lib"
+    "lib",
+    "dist"
   ],
   "peerDependencies": {},
   "devDependencies": {
@@ -68,7 +69,7 @@
     "lint": "npm run lint:js",
     "docs": "docsify serve docs --port=2999 --no-open",
     "dev": "rollup --config --watch",
-    "prebuild": "rm -rf lib",
+    "prebuild": "rm -rf lib && rm -rf dist",
     "build": "rollup --config"
   }
 }

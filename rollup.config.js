@@ -21,13 +21,21 @@ dotenv.config();
 const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === 'production';
 
+const input = './src/index.js';
+
 const external = [
   ...builtinModules,
   ...Object.keys(dependencies || {}),
   ...Object.keys(peerDependencies || {}),
 ];
 
-const plugins = () => [
+const options = {
+  globals: { fs: 'fs' },
+  name: 'nappr-core',
+  sourcemap: true,
+};
+
+const plugins = (snapshots = true) => [
   postcss({
     minimize: !isProduction,
     plugins: [],
@@ -42,38 +50,56 @@ const plugins = () => [
     runtimeHelpers: true,
   }),
   commonjs(),
-  sizeSnapshot(),
+  (snapshots && sizeSnapshot()) || null,
   terser(),
 ];
-const globals = {
-  fs: 'fs',
-};
 
-export default {
-  external,
-  input: './src/index.js',
-  output: [
-    {
+export default [
+  {
+    external,
+    input,
+    output: {
+      ...options,
       file: main,
       format: 'cjs',
-      globals,
-      name: 'nappr-core',
-      sourcemap: true,
     },
-    {
+    plugins: plugins(),
+  },
+  {
+    external,
+    input,
+    output: {
+      ...options,
       file: browser,
       format: 'umd',
-      globals,
-      name: 'nappr-core',
-      sourcemap: true,
     },
-    {
+    plugins: plugins(),
+  },
+  {
+    external,
+    input,
+    output: {
+      ...options,
       file: module,
       format: 'esm',
-      globals,
-      name: 'nappr-core',
-      sourcemap: true,
     },
-  ],
-  plugins: plugins(),
-};
+    plugins: plugins(),
+  },
+  {
+    // MODULES
+    external,
+    input: {
+      fp: './src/fp/index.js',
+      maths: './src/maths/index.js',
+      objects: './src/objects/index.js',
+      strings: './src/strings/index.js',
+      utils: './src/utils/index.js',
+    },
+    output: {
+      ...options,
+      dir: './lib',
+      format: 'esm',
+    },
+    plugins: plugins(false),
+  },
+];
