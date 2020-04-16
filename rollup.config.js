@@ -1,9 +1,11 @@
 import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
 import builtinModules from 'builtin-modules';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import path from 'path';
 import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
@@ -17,19 +19,24 @@ import {
   peerDependencies,
 } from './package.json';
 
+function getModulesInputs() {
+  const sourcPath = './src';
+  const opts = { withFileTypes: true };
+  const dirents = fs.readdirSync(sourcPath, opts);
+  const folders = dirents.reduce((acc, dirent) => {
+    if (!dirent.isDirectory()) return acc;
+    const { name } = dirent;
+    const folder = path.join(sourcPath, name, 'index.js');
+    return { ...acc, [name]: folder };
+  }, {});
+  return folders;
+}
+
 dotenv.config();
 const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === 'production';
 
 const input = './src/index.js';
-
-const modules = {
-  fp: './src/fp/index.js',
-  maths: './src/maths/index.js',
-  objects: './src/objects/index.js',
-  strings: './src/strings/index.js',
-  utils: './src/utils/index.js',
-};
 
 const external = [
   ...builtinModules,
@@ -45,10 +52,11 @@ const plugins = (snapshots = true) => [
   }),
   url(),
   svgr(),
-  resolve({ extensions: ['.js', '.jsx'] }),
+  nodeResolve({ extensions: ['.js', '.jsx'] }),
   babel({
     babelrc: true,
     exclude: ['node_modules/**'],
+    externalHelpers: true,
     runtimeHelpers: true,
   }),
   commonjs(),
@@ -100,7 +108,7 @@ export default [
   {
     // MODULES LIb
     external,
-    input: modules,
+    input: getModulesInputs(),
     output: {
       ...options,
       dir: './lib',
