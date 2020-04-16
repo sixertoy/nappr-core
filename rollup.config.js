@@ -45,6 +45,9 @@ const plugins = () => [
   sizeSnapshot(),
   terser(),
 ];
+const globals = {
+  fs: 'fs',
+};
 
 export default {
   external,
@@ -53,18 +56,21 @@ export default {
     {
       file: main,
       format: 'cjs',
+      globals,
       name: 'nappr-core',
       sourcemap: true,
     },
     {
       file: browser,
       format: 'umd',
+      globals,
       name: 'nappr-core',
       sourcemap: true,
     },
     {
       file: module,
       format: 'esm',
+      globals,
       name: 'nappr-core',
       sourcemap: true,
     },

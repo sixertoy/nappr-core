@@ -1,4 +1,4 @@
-const isEmpty = val => {
+const isEmptyString = val => {
   const isBoolean = typeof val === 'boolean';
   const isFunction = typeof val === 'function';
   if (isFunction || isBoolean) return false;
@@ -8,4 +8,4 @@ const isEmpty = val => {
   return false;
 };
 
-export default isEmpty;
+export default isEmptyString;

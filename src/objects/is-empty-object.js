@@ -1,6 +1,6 @@
-const isEmpty = obj => {
+const isEmptyObject = obj => {
   const keys = Object.keys(obj);
   return keys.length > 0;
 };
 
-export default isEmpty;
+export default isEmptyObject;
