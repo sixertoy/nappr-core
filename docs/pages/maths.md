@@ -1,23 +1,5 @@
 # Strings
 
-#### getFirstLine
-
-> Retourne la première ligne d'un texte/fichier
-
-```javascript
-getFirstLine('this is a foo string !');
-// => false
-```
-
-#### isEmptyString
-
-> Vérifie si la value est une chaine de caractère vide `string`, alias de la function utils/isEmpty
-
-```javascript
-isEmptyString('this is a foo string !');
-// => false
-```
-
 #### isString
 
 > Vérifie si la value est de type `string`
@@ -27,12 +9,12 @@ isString('this is a foo string !');
 // => true
 ```
 
-#### removeWhitespaces
+#### isEmpty
 
-> Supprime les espaces en début et en fin de chaine
+> Vérifie si la value est une chaine de caractère vide `string`, alias de la function utils/isEmpty
 
 ```javascript
-removeWhitespaces('this is a foo string !');
+isEmpty('this is a foo string !');
 // => true
 ```
 
@@ -41,7 +23,7 @@ removeWhitespaces('this is a foo string !');
 > Supprime tous les characteres non alphanumeriques d'une chaine de caractère en les remplacants par des `-`
 
 ```javascript
-slugify('# This is a FOO String !');
+slugify('this is a foo string !');
 // => this-is-a-foo-string
 ```
 
@@ -69,5 +51,5 @@ toUpperCase('this is a foo string !');
 
 ```javascript
 ucFirst('this is a foo string !');
-// => This is a foo string !
+// => THIS IS A FOO STRING !
 ```

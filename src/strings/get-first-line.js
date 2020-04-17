@@ -14,7 +14,6 @@ function getFirstLine(filepath, popts = {}) {
     let pos = 0;
     let index;
     rs.on('data', chunk => {
-      console.log('chunk', chunk);
       index = chunk.indexOf(opts.lineEnding);
       acc += chunk;
       if (index === -1) {

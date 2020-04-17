@@ -9,3 +9,17 @@ code {
     font-family: 'Fira Code VF', monospace !important;
   }
 }
+
+/* ---------------- SIDEBAR ---------------- */
+
+.sidebar ul li a {
+  font-size: 1rem;
+}
+
+.sidebar ul li a:not(.section-link) {
+  font-weight: bold;
+}
+
+.app-sub-sidebar li::before {
+  content: '';
+}
