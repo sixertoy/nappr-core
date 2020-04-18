@@ -4,10 +4,12 @@ const WS = ' ';
 const EOL = '\n';
 
 function trace(msg, method = 'stdout') {
-  const useTTY = Boolean(process[method] && process[method].isTTY);
-  if (useTTY) process[method].write(`${msg}${EOL}`);
-  // eslint-disable-next-line no-console
-  else console.log(msg);
+  try {
+    process[method].write(`${msg}${EOL}`);
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log(msg);
+  }
 }
 
 function buildMessageToTrace(msg, color = false, prefix = false, type = false) {
