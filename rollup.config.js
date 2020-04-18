@@ -66,7 +66,6 @@ const plugins = (snapshots = true) => [
 
 const options = {
   globals: { fs: 'fs' },
-  name: '@nappr/nappr-core',
   sourcemap: true,
 };
 
@@ -78,6 +77,7 @@ const outputs = [
       ...options,
       file: main,
       format: 'cjs',
+      name: '@nappr/nappr-core',
     },
     plugins: plugins(),
   },
@@ -88,6 +88,7 @@ const outputs = [
       ...options,
       file: browser,
       format: 'umd',
+      name: 'NapprCore',
     },
     plugins: plugins(),
   },
@@ -98,6 +99,7 @@ const outputs = [
       ...options,
       file: module,
       format: 'esm',
+      name: '@nappr/nappr-core',
     },
     plugins: plugins(),
   },
