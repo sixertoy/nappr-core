@@ -23,7 +23,7 @@ dotenv.config();
 const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === 'production';
 
-function getModulesInputs() {
+function getModulesInputsFromSourceFolder() {
   const sourcPath = './src';
   const opts = { withFileTypes: true };
   const dirents = fs.readdirSync(sourcPath, opts);
@@ -110,7 +110,7 @@ export default [
   {
     // MODULES LIb
     external,
-    input: getModulesInputs(),
+    input: getModulesInputsFromSourceFolder(),
     output: {
       ...options,
       dir: './lib',
