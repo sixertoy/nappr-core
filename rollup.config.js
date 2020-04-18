@@ -19,6 +19,10 @@ import {
   peerDependencies,
 } from './package.json';
 
+dotenv.config();
+const { NODE_ENV } = process.env;
+const isProduction = NODE_ENV === 'production';
+
 function getModulesInputs() {
   const sourcPath = './src';
   const opts = { withFileTypes: true };
@@ -31,10 +35,6 @@ function getModulesInputs() {
   }, {});
   return folders;
 }
-
-dotenv.config();
-const { NODE_ENV } = process.env;
-const isProduction = NODE_ENV === 'production';
 
 const input = './src/index.js';
 
@@ -66,7 +66,7 @@ const plugins = (snapshots = true) => [
 
 const options = {
   globals: { fs: 'fs' },
-  name: 'nappr-core',
+  name: '@nappr/nappr-core',
   sourcemap: true,
 };
 

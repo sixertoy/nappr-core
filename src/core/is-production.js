@@ -1,4 +1,4 @@
-const { NODE_ENV } = process.env;
+const { NODE_ENV } = (process && process.env) || {};
 
 const isProduction = () => NODE_ENV === 'production';
 
