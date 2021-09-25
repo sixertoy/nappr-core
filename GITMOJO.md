@@ -8,14 +8,14 @@
 | :docker:        | 🐳           | whale                        |
 | :documentation: | 📚           | docs,doc,books               |
 | :deploy:        | 🚀           | rocket                       |
-| :feature:       | ✨            | feat,feats,features,sparkles |
+| :feature:       | ✨           | feat,feats,features,sparkles |
 | :format:        | 🎨           | refactoring,art              |
 | :hotfix:        | 🚨           | fix,rotating_light           |
 | :init:          | 🎉           | tada                         |
 | :move:          | 🚚           | moving,truck                 |
 | :pkg:           | 📦           | dep,package                  |
 | :responsive:    | ☎️           | mobile,phone                 |
-| :revert:        | ⏪            | rewind                       |
+| :revert:        | ⏪           | rewind                       |
 | :style:         | 💄           | css,sass,styles,ui,lipstick  |
-| :tests:         | ✅            | test,white_check_mark        |
+| :tests:         | ✅           | test,white_check_mark        |
 | :wip:           | 🚧           | construction                 |

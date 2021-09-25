@@ -1,3 +1,4 @@
+import * as Arrays from './arrays';
 import * as Core from './core';
 import * as Env from './env';
 import * as FP from './fp';
@@ -7,6 +8,7 @@ import * as Strings from './strings';
 import * as Utils from './utils';
 
 export default {
+  Arrays,
   Core,
   Env,
   FP,
