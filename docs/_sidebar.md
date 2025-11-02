@@ -1,11 +1,20 @@
-<!-- docs/_sidebar.md -->
+- [Accueil](/)
 
-- [**Getting started**](pages/quick-start.md)
+- Guide
+  - [Démarrage](guide/getting-started.md)
+  - [Installation](guide/installation.md)
+  - [Migration](guide/migration.md)
 
-- [Core](pages/core.md)
-- [FP](pages/fp.md)
-- [Maths](pages/maths.md)
-- [Objects](pages/objects.md)
-- [Strings](pages/strings.md)
+- API Reference
+  - [Arrays](api/arrays.md)
+  - [Objects](api/objects.md)
+  - [Strings](api/strings.md)
+  - [Utils](api/utils.md)
+  - [Functional Programming](api/fp.md)
+  - [Maths](api/maths.md)
+  - [Colors](api/colors.md)
+  - [Environment](api/env.md)
+  - [Core](api/core.md)
+  - [Keys](api/keys.md)
 
-- [Github](https://github.com/sixertoy/nappr-core)
+- [Fonctions Deprecated](deprecated.md)

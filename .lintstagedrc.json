@@ -1,6 +1,0 @@
-{
-  "src/**/*.{js,jsx,json,css,scss,md}": [
-    "prettier --single-quote --write",
-    "git add"
-  ]
-}

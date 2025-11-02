@@ -2,75 +2,55 @@
   "name": "@nappr/nappr-core",
   "version": "0.2.38",
   "description": "Nappr JS Core Library",
-  "author": "sixertoy <sixertoy.github@gmail.com>",
-  "license": "ISC",
-  "main": "dist/nappr-core.js",
-  "browser": "dist/nappr-core.min.js",
-  "module": "dist/nappr-core.esm.js",
-  "homepage": "https://github.com/sixertoy/nappr-core",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sixertoy/nappr-core.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sixertoy/nappr-core/issues",
-    "email": "sixertoy.github@gmail.com"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "engines": {
-    "node": "^10.6.0 || ^12.13.1"
+  "type": "module",
+  "main": "./dist/nappr-core.cjs",
+  "module": "./dist/nappr-core.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/nappr-core.js",
+      "require": "./dist/nappr-core.cjs"
+    }
   },
   "files": [
-    "lib",
     "dist"
   ],
-  "peerDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.9.5",
-    "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-url": "^4.0.2",
-    "@svgr/rollup": "^5.3.1",
-    "builtin-modules": "^3.1.0",
-    "docsify": "^4.9.4",
-    "dotenv": "^8.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-prettier": "^3.1.1",
-    "husky": "^3.1.0",
-    "jest": "^25.3.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.13.0",
-    "rollup": "^1.27.8",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-postcss": "^2.5.0",
-    "rollup-plugin-size-snapshot": "^0.10.0",
-    "rollup-plugin-terser": "^5.1.2"
+    "@eslint/js": "^9.17.0",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8"
   },
   "scripts": {
-    "cleanup": "rm -rf node_modules && rm yarn.lock",
-    "test": "jest --coverage",
-    "lint:js": "eslint src/**/*.{js} --config=.eslintrc.json",
-    "lint": "npm run lint:js",
-    "docs": "docsify serve docs --port=2999 --no-open",
-    "dev": "rollup --config --watch",
-    "prebuild": "rm -rf lib && rm -rf dist",
-    "build": "rollup --config",
-    "prepare": "npm run build"
+    "test": "vitest --coverage",
+    "test:watch": "vitest --watch",
+    "lint": "eslint . && tsc --noEmit",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "docs": "docsify serve docs --port=2999",
+    "dev": "vite build --watch",
+    "prebuild": "rm -rf dist",
+    "build": "vite build",
+    "prepare": "yarn run build"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
