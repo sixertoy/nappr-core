@@ -1,6 +1,6 @@
 {
   "name": "@nappr/nappr-core",
-  "version": "0.2.40",
+  "version": "0.3.0",
   "description": "Nappr JS Core Library",
   "type": "module",
   "main": "./dist/nappr-core.cjs",
