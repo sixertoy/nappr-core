@@ -30,7 +30,7 @@ describe('mirrorKeys', () => {
 
   it('should filter out non-function modifiers', () => {
     const upperCase = (str) => str.toUpperCase();
-    expect(mirrorKeys(['a', 'b'], [upperCase, 'not-a-function'])).toEqual({
+    expect(mirrorKeys(['a', 'b'], [upperCase, 'not-a-function' as any])).toEqual({
       a: 'A',
       b: 'B',
     });

@@ -11,16 +11,23 @@ const mirrorKeys = (
   parsers: Parser[] = []
 ): unknown => {
   const isarray = Array.isArray(keys);
+
   const isobject =
     keys !== null && typeof keys === 'object' && !Array.isArray(keys);
   const isvalid = isarray || isobject;
-  if (!isvalid) return keys;
+
+  if (!isvalid) {
+    return keys;
+  }
 
   const modifiers = parsers.filter(
     (fn): fn is Parser => typeof fn === 'function'
   );
-  const parser = isarray ? parseArray : parseObject;
-  let result = parser(keys as string[] | Record<string, unknown>);
+
+  let result: Record<string, string | undefined> = isarray
+    ? parseArray(keys as string[])
+    : parseObject(keys as Record<string, unknown>);
+
   if (!modifiers || !modifiers.length) return result;
   result = Object.keys(result).reduce((acc, key) => {
     const modifiedValue = modifiers.reduce(
@@ -28,6 +35,7 @@ const mirrorKeys = (
         (prevacc && fn(prevacc)) || fn(key),
       undefined
     );
+
     return { ...acc, [key]: modifiedValue };
   }, {} as Record<string, string | undefined>);
   return result;
