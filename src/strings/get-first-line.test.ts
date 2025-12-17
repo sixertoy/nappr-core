@@ -1,7 +1,8 @@
-import { writeFileSync, unlinkSync } from 'fs';
-import { join } from 'path';
+import { unlinkSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
-import getFirstLine from './get-first-line';
+import { join } from 'path';
+
+import { getFirstLine } from './get-first-line';
 
 describe('getFirstLine', () => {
   it('should read first line from file', async () => {

@@ -1,4 +1,4 @@
-import isLocal from './is-local';
+import { isLocal } from './is-local';
 
 describe('isLocal', () => {
   const originalEnv = process.env.NODE_ENV;

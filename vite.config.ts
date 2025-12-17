@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     dts({
       include: ['src/**/*'],
-      exclude: ['src/**/*.test.*', 'src/**/*.spec.*'],
+      exclude: ['src/**/*.test.*'],
       rollupTypes: true,
       outDir: 'dist',
     }),
@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'napprCore',
+      name: 'NapprCore',
       fileName: (format) => `nappr-core.${format === 'es' ? 'js' : 'cjs'}`,
       formats: ['es', 'cjs'],
     },

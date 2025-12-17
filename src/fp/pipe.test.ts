@@ -1,5 +1,4 @@
-
-import pipe from './pipe';
+import { pipe } from './pipe';
 
 describe('pipe', () => {
   it('should pipe functions from left to right', () => {

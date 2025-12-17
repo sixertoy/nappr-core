@@ -1,15 +1,9 @@
 import { defineConfig } from 'vitest/config';
 
+// eslint-disable-next-line import/no-default-export
 export default defineConfig({
   test: {
-    globals: true,
-    environment: 'node',
-    typecheck: {
-      tsconfig: './tsconfig.json',
-    },
     coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html'],
       exclude: [
         'node_modules/',
         'dist/',
@@ -17,6 +11,13 @@ export default defineConfig({
         '**/*.test.*',
         '**/*.spec.*',
       ],
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+    },
+    environment: 'node',
+    globals: true,
+    typecheck: {
+      tsconfig: './tsconfig.json',
     },
   },
 });

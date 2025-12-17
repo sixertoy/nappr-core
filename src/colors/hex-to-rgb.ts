@@ -5,4 +5,3 @@ export const hexToRGB = (hex: string): [number, number, number] => {
     parseInt(hex.slice(5, 7), 16), // blue
   ];
 };
-export default hexToRGB;

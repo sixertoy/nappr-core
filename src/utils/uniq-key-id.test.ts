@@ -1,4 +1,4 @@
-import uniqKeyId from './uniq-key-id';
+import { uniqKeyId } from './uniq-key-id';
 
 describe('uniqKeyId', () => {
   it('should create unique key from string arguments', () => {
@@ -19,7 +19,7 @@ describe('uniqKeyId', () => {
 
   it('should handle mixed string and array arguments', () => {
     expect(uniqKeyId('prefix', ['a', 'b'], 'suffix')).toBe(
-      '::prefix::a::b::suffix'
+      '::prefix::a::b::suffix',
     );
   });
 

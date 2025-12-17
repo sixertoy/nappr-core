@@ -1,4 +1,5 @@
-import rgba from './rgba';
+import { rgba } from './rgba';
+
 describe('rgba', () => {
   it('should convert hex to rgba string', () => {
     expect(rgba('#FF0000', 0.5)).toBe('rgba(255, 0, 0, 0.5)');

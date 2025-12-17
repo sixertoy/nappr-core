@@ -1,4 +1,4 @@
-import getProtoName from './get-proto-name';
+import { getProtoName } from './get-proto-name';
 
 describe('getProtoName', () => {
   it('should return constructor name for class instance', () => {

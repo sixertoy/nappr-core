@@ -1,4 +1,4 @@
-import isProduction from './is-production';
+import { isProduction } from './is-production';
 
 describe('isProduction', () => {
   const originalEnv = process.env.NODE_ENV;

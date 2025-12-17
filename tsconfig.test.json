@@ -1,8 +1,26 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.node.json",
   "compilerOptions": {
-    "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "esModuleInterop": true
   },
-  "include": ["src/**/*.test.ts", "src/**/*.spec.ts", "vitest.config.ts"]
+  "exclude": [
+    "**/.template",
+    "**/tmp",
+    "**/temp",
+    "**/lib",
+    "**/dist",
+    "**/build",
+    "**/public",
+    "**/scripts",
+    "**/.scripts",
+    "**/coverage",
+    "**/node_modules",
+    "**/__fixtures__",
+    "**/__snapshots__"
+  ],
+  "include": [
+    "**/src/**/*.d.ts",
+    "**/src/**/*.test.ts",
+    "**/src/**/*.test.tsx"
+  ]
 }

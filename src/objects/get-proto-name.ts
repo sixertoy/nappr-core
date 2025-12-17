@@ -1,6 +1,6 @@
 const FUNC_NAME_REGEX = /function (.{1,})\(/;
 
-function getProtoName(instance: unknown): string {
+export const getProtoName = (instance: unknown): string => {
   if (
     typeof instance !== 'object' ||
     instance === null ||
@@ -14,5 +14,4 @@ function getProtoName(instance: unknown): string {
   const results = FUNC_NAME_REGEX.exec(constructor.toString());
   name = results && results.length > 1 ? results[1] : '';
   return name;
-}
-export default getProtoName;
+};

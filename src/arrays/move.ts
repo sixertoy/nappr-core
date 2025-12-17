@@ -1,4 +1,4 @@
-function move<T>(arr: T[], from: number, to: number): T[] {
+export const move = <T>(arr: T[], from: number, to: number): T[] => {
   const item = arr[from];
   const { length } = arr;
   const diff = from - to;
@@ -23,5 +23,4 @@ function move<T>(arr: T[], from: number, to: number): T[] {
     ];
   }
   return arr;
-}
-export default move;
+};

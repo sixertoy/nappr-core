@@ -1,2 +1,2 @@
-export { default as getPercentage } from './get-percentage';
-export { default as log2 } from './log2';
+export { getPercentage } from './get-percentage';
+export { log2 } from './log2';

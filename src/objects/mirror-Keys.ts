@@ -6,10 +6,7 @@ const parseArray = (vals: string[]): Record<string, string> =>
 const parseObject = (vals: Record<string, unknown>): Record<string, string> =>
   Object.keys(vals).reduce((acc, val) => ({ ...acc, [val]: val }), {});
 
-const mirrorKeys = (
-  keys: unknown,
-  parsers: Parser[] = []
-): unknown => {
+export const mirrorKeys = (keys: unknown, parsers: Parser[] = []): unknown => {
   const isarray = Array.isArray(keys);
 
   const isobject =
@@ -21,23 +18,24 @@ const mirrorKeys = (
   }
 
   const modifiers = parsers.filter(
-    (fn): fn is Parser => typeof fn === 'function'
+    (fn): fn is Parser => typeof fn === 'function',
   );
 
   let result: Record<string, string | undefined> = isarray
     ? parseArray(keys as string[])
     : parseObject(keys as Record<string, unknown>);
 
-  if (!modifiers || !modifiers.length) return result;
-  result = Object.keys(result).reduce((acc, key) => {
-    const modifiedValue = modifiers.reduce(
-      (prevacc: string | undefined, fn) =>
-        (prevacc && fn(prevacc)) || fn(key),
-      undefined
-    );
+  if (!modifiers?.length) return result;
+  result = Object.keys(result).reduce<Record<string, string | undefined>>(
+    (acc, key) => {
+      const modifiedValue = modifiers.reduce(
+        (prevacc: string | undefined, fn) => (prevacc && fn(prevacc)) || fn(key),
+        undefined,
+      );
 
-    return { ...acc, [key]: modifiedValue };
-  }, {} as Record<string, string | undefined>);
+      return { ...acc, [key]: modifiedValue };
+    },
+    {},
+  );
   return result;
 };
-export default mirrorKeys;

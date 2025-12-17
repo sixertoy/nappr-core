@@ -1,3 +1,3 @@
-export { default as isDevelopment } from './is-development';
-export { default as isLocal } from './is-local';
-export { default as isProduction } from './is-production';
+export { isDevelopment } from './is-development';
+export { isLocal } from './is-local';
+export { isProduction } from './is-production';

@@ -1,4 +1,4 @@
-import toggleBooleans from './toggle-booleans';
+import { toggleBooleans } from './toggle-booleans';
 
 describe('toggleBooleans', () => {
   it('should return the same value when shouldToggle is false', () => {

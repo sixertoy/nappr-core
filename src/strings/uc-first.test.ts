@@ -1,4 +1,4 @@
-import ucfirst from './uc-first';
+import { ucfirst } from './uc-first';
 
 describe('ucfirst', () => {
   it('should uppercase first letter', () => {

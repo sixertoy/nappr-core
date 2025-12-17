@@ -1,4 +1,4 @@
-import getPercentage from './get-percentage';
+import { getPercentage } from './get-percentage';
 
 describe('getPercentage', () => {
   it('should calculate percentage correctly', () => {

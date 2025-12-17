@@ -6,4 +6,3 @@ export const hexToLuma = (hexstr: string): number => {
   const colors = [0.299 * red, 0.587 * green, 0.114 * blue];
   return colors.reduce((a, b) => a + b, 0) / 255;
 };
-export default hexToLuma;

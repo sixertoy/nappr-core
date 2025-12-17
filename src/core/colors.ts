@@ -9,20 +9,19 @@ const COLORS = {
   YELLOW: 33,
 } as const;
 
-const getColor = (msg: string, code: number): string =>
-  `\u001b[${code}m${msg}\u001b[39m`;
+const getColor = (msg: string, code: number): string => `\u001b[${code}m${msg}\u001b[39m`;
 
 export type ColorName =
-  | 'blue'
-  | 'bold'
-  | 'cyan'
-  | 'gray'
-  | 'grey'
-  | 'green'
-  | 'magenta'
-  | 'red'
-  | 'white'
-  | 'yellow';
+  | 'blue' |
+  'bold' |
+  'cyan' |
+  'gray' |
+  'grey' |
+  'green' |
+  'magenta' |
+  'red' |
+  'white' |
+  'yellow';
 
 export interface Colors {
   blue: (msg: string) => string;
@@ -37,7 +36,7 @@ export interface Colors {
   yellow: (msg: string) => string;
 }
 
-const colors: Colors = {
+export const colors: Colors = {
   blue: (msg: string) => getColor(msg, COLORS.BLUE),
   bold: (msg: string) => `\u001b[0;1m${msg}\u001b[0;0m`,
   cyan: (msg: string) => getColor(msg, COLORS.CYAN),
@@ -49,4 +48,3 @@ const colors: Colors = {
   white: (msg: string) => getColor(msg, COLORS.WHITE),
   yellow: (msg: string) => getColor(msg, COLORS.YELLOW),
 };
-export default colors;

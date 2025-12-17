@@ -4,4 +4,3 @@ export const rgb = (hex: string): string => {
   const [r, g, b] = hexToRGB(hex);
   return `rgb(${r}, ${g}, ${b})`;
 };
-export default rgb;

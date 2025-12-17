@@ -1,4 +1,4 @@
-const allCodes = {
+export const allCodes = {
   ADD: 107,
   ALT: 18,
   BACKSPACE: 8,
@@ -99,5 +99,3 @@ const allCodes = {
   TAB: 9,
   UP_ARROW: 38,
 } as const;
-
-export default allCodes;

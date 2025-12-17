@@ -1,4 +1,4 @@
-import nodesToArray from './nodes-to-array';
+import { nodesToArray } from './nodes-to-array';
 
 describe('nodesToArray', () => {
   it('should convert NodeList to array', () => {

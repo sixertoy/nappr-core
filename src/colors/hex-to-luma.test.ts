@@ -1,4 +1,5 @@
-import hexToLuma from './hex-to-luma';
+import { hexToLuma } from './hex-to-luma';
+
 describe('hexToLuma', () => {
   it('should calculate luma for white', () => {
     expect(hexToLuma('#FFFFFF')).toBeCloseTo(1, 2);

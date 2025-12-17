@@ -1,4 +1,4 @@
-import log2 from './log2';
+import { log2 } from './log2';
 
 describe('log2', () => {
   it('should calculate base 2 logarithm', () => {

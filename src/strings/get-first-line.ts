@@ -8,10 +8,10 @@ interface GetFirstLineOptions {
   lineEnding?: string;
 }
 
-function getFirstLine(
+export const getFirstLine = (
   filepath: string,
-  popts: GetFirstLineOptions = {}
-): Promise<string> {
+  popts: GetFirstLineOptions = {},
+): Promise<string> => {
   const opts: Required<GetFirstLineOptions> = {
     encoding: popts.encoding || ENCODING,
     lineEnding: popts.lineEnding || LINE_END,
@@ -31,10 +31,11 @@ function getFirstLine(
         rs.close();
       }
     })
-      .on('close', () =>
-        resolve(acc.slice(acc.charCodeAt(0) === 0xfeff ? 1 : 0, pos))
-      )
-      .on('error', (err: Error) => reject(err));
+      .on('close', () => {
+      { resolve(acc.slice(acc.charCodeAt(0) === 0xfeff ? 1 : 0, pos)); },
+      })
+      .on('error', (err: Error) => {
+        reject(err);
+      });
   });
-}
-export default getFirstLine;
+};

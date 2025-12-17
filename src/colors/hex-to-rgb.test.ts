@@ -1,4 +1,5 @@
-import hexToRGB from './hex-to-rgb';
+import { hexToRGB } from './hex-to-rgb';
+
 describe('hexToRGB', () => {
   it('should convert hex color to RGB array', () => {
     expect(hexToRGB('#FF0000')).toEqual([255, 0, 0]);

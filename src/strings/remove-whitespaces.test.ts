@@ -1,4 +1,4 @@
-import removeWhitespaces from './remove-whitespaces';
+import { removeWhitespaces } from './remove-whitespaces';
 
 describe('removeWhitespaces', () => {
   it('should remove all whitespaces from string', () => {

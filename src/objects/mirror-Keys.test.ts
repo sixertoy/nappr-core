@@ -1,4 +1,4 @@
-import mirrorKeys from './mirror-Keys';
+import { mirrorKeys } from './mirror-Keys';
 
 describe('mirrorKeys', () => {
   it('should mirror array keys to object', () => {
@@ -24,13 +24,15 @@ describe('mirrorKeys', () => {
   });
 
   it('should apply modifiers when provided', () => {
-    const upperCase = (str) => str.toUpperCase();
+    const upperCase = (str: string) => str.toUpperCase();
     expect(mirrorKeys(['a', 'b'], [upperCase])).toEqual({ a: 'A', b: 'B' });
   });
 
   it('should filter out non-function modifiers', () => {
-    const upperCase = (str) => str.toUpperCase();
-    expect(mirrorKeys(['a', 'b'], [upperCase, 'not-a-function' as any])).toEqual({
+    const upperCase = (str: string) => str.toUpperCase();
+    expect(
+      mirrorKeys(['a', 'b'], [upperCase, 'not-a-function' as any]),
+    ).toEqual({
       a: 'A',
       b: 'B',
     });

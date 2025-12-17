@@ -1,4 +1,4 @@
-import fill from './fill';
+import { fill } from './fill';
 
 describe('fill', () => {
   it('should create an array with n values starting from 0', () => {

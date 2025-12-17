@@ -1,4 +1,4 @@
-import move from './move';
+import { move } from './move';
 
 describe('move', () => {
   it('should move element from higher index to lower index (left)', () => {

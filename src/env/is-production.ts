@@ -1,4 +1,4 @@
-const isProduction = (): boolean => {
+export const isProduction = (): boolean => {
   try {
     const env = typeof process !== 'undefined' ? process.env : undefined;
     const { NODE_ENV } = env || {};
@@ -7,4 +7,3 @@ const isProduction = (): boolean => {
     return true;
   }
 };
-export default isProduction;

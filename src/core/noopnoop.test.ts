@@ -1,4 +1,4 @@
-import noopnoop from './noopnoop';
+import { noopnoop } from './noopnoop';
 
 describe('noopnoop', () => {
   it('should return undefined', () => {

@@ -1,4 +1,4 @@
-import isEmptyString from './is-empty-string';
+import { isEmptyString } from './is-empty-string';
 
 describe('isEmptyString', () => {
   it('should return false for non-empty string', () => {

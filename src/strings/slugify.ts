@@ -1,10 +1,9 @@
-const trimValue = (val: unknown): string =>
-  (val && typeof val === 'string' && val ? val : '').trim();
+const trimValue = (val: unknown): string => (val && typeof val === 'string' && val ? val : '').trim();
 
-const slugify = (
+export const slugify = (
   text: string | unknown = '',
   pprefix = '',
-  psuffix = ''
+  psuffix = '',
 ): string => {
   const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;';
   const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------';
@@ -29,4 +28,3 @@ const slugify = (
       .replace(/-+$/, '');
   return (result && `${prefix}${result}${suffix}`) || '';
 };
-export default slugify;

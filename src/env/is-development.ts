@@ -1,4 +1,4 @@
-const isDevelopment = (): boolean => {
+export const isDevelopment = (): boolean => {
   try {
     const env = typeof process !== 'undefined' ? process.env : undefined;
     const { NODE_ENV } = env || {};
@@ -12,4 +12,3 @@ const isDevelopment = (): boolean => {
     return false;
   }
 };
-export default isDevelopment;

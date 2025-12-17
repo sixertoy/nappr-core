@@ -1,4 +1,4 @@
-import slugify from './slugify';
+import { slugify } from './slugify';
 
 describe('slugify', () => {
   it('should convert text to slug', () => {
